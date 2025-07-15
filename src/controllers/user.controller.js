@@ -11,7 +11,7 @@ const getUsers = asyncHandler(async (req, res) => {
 //add the new user to the db
 const addUser = asyncHandler(async (req, res) => {
     const { name } = req.body;
-    if ([name, email, password, role].some((field) => field?.trim() === "")) {
+    if (name.trim() === "") {
         return res.status(400).json({ message: "Name is required" });
     }
     const existingUser = await User.find({ name });
